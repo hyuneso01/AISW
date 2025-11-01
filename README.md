@@ -29,6 +29,7 @@ AISW수업 과제 제출용입니다.
 
 🛠 사용한 기술스택
 - HTML, CSS, JavaScript (chart.js)
+- localStorage
 - 핀터레스트 이미지 배경 적용
 - 데이터 목록에 마우스 호버 적용
   
