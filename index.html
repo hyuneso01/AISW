@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>간편 재무비율 분석</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>간편 재무비율 분석</h1>
+  </header>
+
+  <main class="container">
+    <section class="panel form-panel">
+      <h2>데이터 입력</h2>
+      <form id="company-form">
+        <input type="hidden" id="record-id">
+        <div class="field-row">
+          <label for="company-name">회사명</label>
+          <input id="company-name" type="text" placeholder="예: ACME Corp" required>
+        </div>
+        <div class="grid">
+          <div class="field">
+            <label for="current-assets">유동자산</label>
+            <input id="current-assets" type="number" min="0" step="0.01" placeholder="0" required>
+          </div>
+          <div class="field">
+            <label for="current-liabilities">유동부채</label>
+            <input id="current-liabilities" type="number" min="0" step="0.01" placeholder="0" required>
+          </div>
+          <div class="field">
+            <label for="total-debt">총부채</label>
+            <input id="total-debt" type="number" min="0" step="0.01" placeholder="0" required>
+          </div>
+          <div class="field">
+            <label for="equity">자본</label>
+            <input id="equity" type="number" min="0" step="0.01" placeholder="0" required>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-label">유동비율</div>
+            <div class="metric-value"><span id="current-ratio">0.0</span>%</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">부채비율</div>
+            <div class="metric-value"><span id="debt-ratio">0.0</span>%</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" id="save-btn" class="primary">저장</button>
+          <button type="button" id="reset-btn" class="ghost">초기화</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel charts-panel">
+      <h2>시각화</h2>
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3>유동비율 (유동자산 vs 유동부채)</h3>
+          <canvas id="currentRatioChart" height="140"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>부채비율 (총부채 vs 자본)</h3>
+          <canvas id="debtRatioChart" height="140"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel list-panel">
+      <h2>데이터 목록</h2>
+      <table class="records-table" id="records-table">
+        <thead>
+          <tr>
+            <th>회사명</th>
+            <th class="num">유동자산</th>
+            <th class="num">유동부채</th>
+            <th class="num">총부채</th>
+            <th class="num">자본</th>
+            <th class="num">유동비율</th>
+            <th class="num">부채비율</th>
+            <th>투자판단</th>
+            <th>단기투자</th>
+            <th>장기투자</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="records-body">
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  </body>
+  </html>
+
+

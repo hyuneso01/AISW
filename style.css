@@ -1,0 +1,250 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #3b82f6;
+  --border: #1f2937;
+  --accent: #22c55e;
+  --danger: #ef4444;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Helvetica Neue', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  background: linear-gradient(180deg, #0b1022 0%, #0f172a 100%);
+  color: var(--text);
+}
+
+.app-header, .app-footer {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+}
+.app-footer { border-top: 1px solid var(--border); border-bottom: none; color: var(--muted); }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 980px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'form charts'
+      'list list';
+  }
+  .form-panel { grid-area: form; }
+  .charts-panel { grid-area: charts; }
+  .list-panel { grid-area: list; }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.panel h2 { margin: 0 0 12px; font-size: 16px; color: #f3f4f6; }
+
+.field-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+}
+
+label { color: var(--muted); font-size: 13px; }
+input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0b1222;
+  color: var(--text);
+}
+
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.metric { background: #0b1222; border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.metric-label { color: var(--muted); font-size: 12px; }
+.metric-value { font-size: 20px; font-weight: 700; margin-top: 6px; }
+
+.actions { display: flex; gap: 8px; margin-top: 12px; }
+button { cursor: pointer; border-radius: 8px; padding: 10px 14px; border: 1px solid transparent; color: white; }
+.primary { background: var(--primary); }
+.ghost { background: transparent; border-color: var(--border); color: var(--muted); }
+.danger { background: var(--danger); }
+
+.charts-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 640px) { .charts-grid { grid-template-columns: 1fr 1fr; } }
+.chart-card { background: #0b1222; border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.chart-card h3 { margin: 0 0 10px; font-size: 14px; color: #d1d5db; }
+
+.records-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.records-table thead th { text-align: left; padding: 10px; color: #cbd5e1; border-bottom: 1px solid var(--border); }
+.records-table tbody td { padding: 10px; border-bottom: 1px solid var(--border); }
+.records-table tbody tr:hover { background: #22741C; }
+.records-table .num { text-align: right; }
+.row-actions { display: flex; gap: 6px; }
+
+.empty { color: var(--muted); padding: 10px; text-align: center; }
+
+#reset-btn {
+  background: #fff;
+  color: #1f2937;
+  border: 1px solid var(--border);
+}
+
+.list-panel h2 {
+  color: #FFD600;
+  font-size: 22px;
+}
+
+.form-panel h2 { color: #FF007F; font-size: 22px; }
+.charts-panel h2 { color: #FFD600; font-size: 22px; }
+
+.records-table thead th:nth-child(1),
+.records-table thead th:nth-child(2),
+.records-table thead th:nth-child(3),
+.records-table thead th:nth-child(4),
+.records-table thead th:nth-child(5),
+.records-table thead th:nth-child(6),
+.records-table thead th:nth-child(7),
+.records-table thead th:nth-child(8),
+.records-table thead th:nth-child(9),
+.records-table thead th:nth-child(10) {
+  color: #00D8FF;
+  font-size: 16px;
+}
+
+.records-table thead th:nth-child(9),
+.records-table tbody td:nth-child(9) {
+  text-align: center;
+}
+
+.records-table thead th:nth-child(8),
+.records-table tbody td:nth-child(8) {
+  text-align: center;
+}
+
+.list-panel { overflow-x: auto; }
+
+.form-panel {
+  border-width: 4px;
+  background: linear-gradient(135deg, #f0a3c0 0%, #a7b3ff 100%);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* 장식용 부드러운 캡슐 모양 */
+.form-panel::before,
+.form-panel::after {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 48px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.05));
+  filter: blur(0.2px);
+}
+.form-panel::before { top: -60px; left: -40px; transform: rotate(35deg); }
+.form-panel::after { bottom: -70px; right: -30px; transform: rotate(35deg); }
+
+/* 입력, 라벨, 메트릭을 카드 톤에 맞게 조정 */
+.form-panel label { color: #ffffff; text-shadow: 0 1px 0 rgba(0,0,0,0.1); }
+.form-panel input[type="text"],
+.form-panel input[type="number"] {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #000000;
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+}
+.form-panel input[type="text"]::placeholder,
+.form-panel input[type="number"]::placeholder { color: rgba(0,0,0,0.6); }
+.form-panel input[type="text"]:focus,
+.form-panel input[type="number"]:focus { outline: 2px solid rgba(255,255,255,0.6); }
+
+.form-panel .metrics .metric {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #ffffff;
+}
+.form-panel .metric-value #current-ratio,
+.form-panel .metric-value #debt-ratio {
+  color: #4c1d95; /* 진한 보라색 */
+}
+/* 단위(%)도 같은 색으로 표시 */
+.form-panel .metric-value { color: #4c1d95; }
+.form-panel .metric-label { color: #000000; }
+.form-panel .actions .ghost { background: rgba(255,255,255,0.22); color: #111; border-color: rgba(255,255,255,0.0); }
+
+/* 유동자산 레이블 글자색을 검정으로 지정 */
+.form-panel label[for="current-assets"] {
+  color: #000000 !important;
+  text-shadow: none;
+}
+
+/* 회사명, 유동부채, 총부채, 자본 레이블도 검정으로 지정 */
+.form-panel label[for="company-name"],
+.form-panel label[for="current-liabilities"],
+.form-panel label[for="total-debt"],
+.form-panel label[for="equity"] {
+  color: #000000 !important;
+  text-shadow: none;
+}
+
+.list-panel {
+  border-width: 4px;
+}
+
+.charts-panel {
+  border-width: 4px;
+}
+
+@media (max-width: 600px) {
+  .container { grid-template-columns: 1fr !important; padding: 8px; gap: 10px; }
+  .panel { padding: 8px 4px; border-radius: 0; }
+  .grid, .charts-grid { grid-template-columns: 1fr !important; gap: 8px; }
+  h1, h2 { font-size: 18px !important; }
+  input, button { font-size: 14px; padding: 6px 8px; }
+  .records-table {
+    font-size: 12px;
+    min-width: 650px;
+  }
+  .records-table thead th,
+  .records-table tbody td {
+    padding: 5px 4px;
+  }
+  .list-panel { overflow-x: auto; }
+}
+
+
