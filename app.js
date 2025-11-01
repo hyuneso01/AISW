@@ -272,17 +272,24 @@
   tbody.addEventListener('click', function (e) {
     const target = e.target;
     if (!(target instanceof HTMLElement)) return;
-    const action = target.getAttribute('data-action');
-    if (!action) return;
+
+    // Handle clicks on the row itself
     const tr = target.closest('tr');
     if (!tr) return;
     const id = tr.getAttribute('data-id');
     if (!id) return;
 
+    // If a row is clicked, treat it as an edit action
+    if (target === tr || tr.contains(target) && !target.hasAttribute('data-action')) { // Added condition to check if target is tr or child, but not an action button
+      editRecord(id);
+      return;
+    }
+
+    const action = target.getAttribute('data-action');
+    if (!action) return;
+
     if (action === 'edit') {
-      const records = getAll();
-      const found = records.find(r => r.id === id);
-      if (found) setFormValues(found);
+      editRecord(id);
     } else if (action === 'delete') {
       if (confirm('삭제하시겠습니까?')) {
         removeById(id);
@@ -291,6 +298,12 @@
       }
     }
   });
+
+  function editRecord(id) {
+    const records = getAll();
+    const found = records.find(r => r.id === id);
+    if (found) setFormValues(found);
+  }
 
   // init
   initCharts();
