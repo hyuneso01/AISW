@@ -61,6 +61,4 @@ AISW수업 과제 제출용입니다.
 
 <img width="1065" height="912" alt="image" src="https://github.com/user-attachments/assets/f839cd81-06f0-47c4-8caa-b5e0363c379b" />
 
-*데이터값은 임의의 값임.
-
-
+*데이터는 임의의 값임.
