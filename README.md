@@ -29,7 +29,8 @@ AISW수업 과제 제출용입니다.
 - HTML, CSS, JavaScript (chart.js)
 - localStorage
 - 핀터레스트 이미지 배경 적용
-- 데이터 목록에 마우스 호버 적용<br/><br/>
+- 데이터 목록에 마우스 호버 적용
+- 모바일 반응형 적용<br/><br/>
 
   
 🔴 기타 참고사항 (조건함수)
