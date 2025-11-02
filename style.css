@@ -40,6 +40,15 @@ body {
   gap: 20px;
 }
 
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'form charts'
+      'list list';
+  }
+}
+
 @media (min-width: 980px) {
   .container {
     grid-template-columns: 1fr 1fr;
